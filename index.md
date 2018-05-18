@@ -29,9 +29,7 @@ trovu allows you to define shortcuts for URLs / websites and then quickly access
    - https://raw.githubusercontent.com/trovu/trovu/master/shortcuts/o/g/1.txt
 1. From the fetches that succeeded, the results are evaluated in namespace order.
 1. Since already the first text file exists, its URL is used for further processing
-{% raw %}
-    -  `https://www.google.de/search?hl={$language}&q={%query}&ie=utf-8` 
-{% endraw %}
+    -  `https://www.google.de/search?hl={$language}&q={%query}&ie=utf-8` %}
 1. The `{%query}` placeholder is being replace with the query argument `foo`.
 1. A redirect to the URL is made.
 
