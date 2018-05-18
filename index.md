@@ -1,37 +1,57 @@
-## Welcome to GitHub Pages
+# trovu – Web shortcuts managed in Git.
 
-You can use the [editor on GitHub](https://github.com/trovu/trovu.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+trovu is a spin-off from [Serchilo](https://github.com/georgjaehnig/serchilo-drupal) / [FindFind.it](https://www.findfind.it/).
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+trovu allows you to define shortcuts for URLs / websites and then quickly access them in a command-line way, e.g.
 
-### Markdown
+- `g berlin` – search Google for "berlin".
+- `gd london, liverpool` – find a route on Google Maps from London to Liverpool. 
+- `db b, m` – find the next * Bahn* train connection from Berlin to Munich.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Differences to Serchilo
 
-```markdown
-Syntax highlighted code block
+- The shortcuts are kept in text and JSON files in a public Git(hub) repository (this one). Users can also use their own repository, thus:
+  - **more freedom**.
+- trovu's parsing works completely client-side, so no search queries are sent out, only to the actual target site. Thus:
+  - **faster processing**,
+  - **enhanced privacy**.
 
-# Header 1
-## Header 2
-### Header 3
+## Step-by-step: How a query is processed
 
-- Bulleted
-- List
+1. A query comes in, e.g. `g foobar`.
+1. The current namespace setting is `o,de,.de`.
+1. The query is parsed – in the client by Javascript – into
+   - keyword: `g`
+   - argument: `foobar`
+1. Based on the query, the client Javascript tries to fetch 3 URLs:
+   - https://raw.githubusercontent.com/trovu/trovu/master/shortcuts/.de/g/1.txt
+   - https://raw.githubusercontent.com/trovu/trovu/master/shortcuts/de/g/1.txt
+   - https://raw.githubusercontent.com/trovu/trovu/master/shortcuts/o/g/1.txt
+1. From the fetches that succeeded, the results are evaluated in namespace order.
+1. Since already the first text file exists, its URL is used for further processing
+    - `https://www.google.de/search?hl={$language}&q={%query}&ie=utf-8`
+1. The `{%query}` placeholder is being replace with the query argument `foo`.
+1. A redirect to the URL is made.
 
-1. Numbered
-2. List
+## Repositories
 
-**Bold** and _Italic_ and `Code` text
+### [trovu](https://github.com/trovu/trovu)
 
-[Link](url) and ![Image](src)
-```
+This repository contains all the data, e.g.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+- shortcuts
+- mappings (later)
 
-### Jekyll Themes
+Fork this repository to add or edit shortcuts (and send then a pull request).
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/trovu/trovu.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### [trovu-web](https://github.com/trovu/trovu-web)
 
-### Support or Contact
+This repository contains the web frontend.
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### trovu-android / trovu-ios / trovu-gtk
+
+Future plans :) (Can be picked up by you, too.)
+
+## Demo
+
+https://trovu.github.io/trovu-web/
