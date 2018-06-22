@@ -17,10 +17,21 @@ digraph {
     variables [label="Variables\nLanguage: de\nCountry: .de"]
     namespaceOrder [label="Namespace order: o, de, .de, johndoe"];
     namespaceUrlTemplates [label="Namespace URL templates
-o: https://raw.githubusercontent.com/trovu/trovu-data/master/shortcuts\n/o/{%keyword}/{%argumentCount}.txt
-de: https://raw.githubusercontent.com/trovu/trovu-data/master/shortcuts\n/de/{%keyword}/{%argumentCount}.txt
-.de: https://raw.githubusercontent.com/trovu/trovu-data/master/shortcuts\n/.de/{%keyword}/{%argumentCount}.txt
-johndoe: https://example.com/trovu/{%keyword}.{%argumentCount}.txt
+
+o: https://raw.githubusercontent.com
+/trovu/trovu-data/master/shortcuts
+/o/{%keyword}/{%argumentCount}.txt
+
+de: https://raw.githubusercontent.com
+/trovu/trovu-data/master/shortcuts
+/de/{%keyword}/{%argumentCount}.txt
+
+.de: https://raw.githubusercontent.com
+/trovu/trovu-data/master/shortcuts
+/.de/{%keyword}/{%argumentCount}.txt
+
+johndoe: https://example.com/trovu
+/{%keyword}.{%argumentCount}.txt
 "];
   }
   subgraph cluster_output {
