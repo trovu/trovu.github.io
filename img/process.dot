@@ -59,7 +59,7 @@ johndoe: https://example.com/trovu/g.1.txt
   parsedQuery -> buildFetchUrls[arrowhead="none"];
   namespaceUrlTemplates -> buildFetchUrls[arrowhead="none"];
  
-  buildFetchUrls [label="build fetch URLs" shape="none"]; 
+  buildFetchUrls [label="build fetch URLs" shape="none" margin=0 width=0 height=0]; 
 
   buildFetchUrls -> shortcutFetchUrls;
   shortcutFetchUrls -> responseO [label="request o"];
