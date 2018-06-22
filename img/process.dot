@@ -73,7 +73,7 @@ johndoe: https://example.com/trovu/g.1.txt
   pickNamespace [label="pick namespace according to order" shape="none" margin=0 width=0 height=0];
   pickNamespace -> pickedNamespace;
   pickedNamespace [label="Picked namespace: .de"]
-  pickedNamespace -> readFile;
+  pickedNamespace -> readFile [arrowhead="none"];
   readFile [label="read file from .de request\nhttps://raw.githubusercontent.com
 /trovu/trovu-data/master/shortcuts/.de/g/1.txt" shape="none" margin=0 width=0 height=0];
   readFile -> redirectUrlDotDe; 
