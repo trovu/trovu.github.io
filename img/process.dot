@@ -1,6 +1,9 @@
 digraph {
 
   node [shape="rectangle"]
+  graph [fontname = "helvetica"];
+  node [fontname = "helvetica"];
+  edge [fontname = "helvetica"];
 
   subgraph cluster_input {
     label="User input";
