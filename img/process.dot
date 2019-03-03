@@ -80,7 +80,7 @@ johndoe: https://example.com/trovu/g.1.yml
   readFile [label="read file from .de request\nhttps://raw.githubusercontent.com
 /trovu/trovu-data/master/shortcuts/.de/g/1.yml" shape="none" margin=0 width=0 height=0];
   readFile -> redirectUrlDotDe; 
-  redirectUrlReplacedVariables[label="https://www.google.de/search?hl=de&q={%query}&ie=utf-8"]
+  redirectUrlReplacedVariables[label="url: https://www.google.de/search?hl=de&q={%query}&ie=utf-8"]
   redirectUrlDotDe -> replaceVariables [arrowhead="none"];
   variables -> replaceVariables [arrowhead="none"];
   replaceVariables [label="replace variables" shape="none" margin=0 width=0 height=0];
