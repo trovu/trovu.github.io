@@ -18,7 +18,7 @@ digraph {
     namespaceUrlTemplates -> namespaceOrder [style="invis"];
     namespaceOrder ->  variables [style="invis"];
     variables [label="Variables\nLanguage: de\nCountry: .de"]
-    namespaceOrder [label="Namespace order: o, de, .de, johndoe"];
+    namespaceOrder [label="Namespace order: o, de, .de"];
     namespaceUrlTemplates [label="Namespace URL templates
 
 o: https://raw.githubusercontent.com
@@ -32,9 +32,6 @@ de: https://raw.githubusercontent.com
 .de: https://raw.githubusercontent.com
 /trovu/trovu-data/master/shortcuts
 /.de/{%keyword}/{%argumentCount}.yml
-
-johndoe: https://example.com/trovu
-/{%keyword}.{%argumentCount}.yml
 "];
   }
   subgraph cluster_output {
@@ -50,14 +47,12 @@ johndoe: https://example.com/trovu
 o: https://raw.githubusercontent.com/trovu/trovu-data/master/shortcuts/o/g/1.yml
 de: https://raw.githubusercontent.com/trovu/trovu-data/master/shortcuts/de/g/1.yml
 .de: https://raw.githubusercontent.com/trovu/trovu-data/master/shortcuts/.de/g/1.yml
-johndoe: https://example.com/trovu/g.1.yml
 "];
 
   responseO [label="Success (200)"];
   responseDe [label="Not Found (404)"];
   responseDotDe [label="Success (200)"];
-  responseJohnDoe [label="Not Found (404)"];
-  redirectUrlDotDe [label="https://www.google.de/search?hl={$language}&q={%query}&ie=utf-8"];
+  redirectUrlDotDe [label="url: https://www.google.de/search?hl={$language}&q={%query}&ie=utf-8"];
   query->parsedQuery [label="parse query"];
   parsedQuery -> buildFetchUrls[arrowhead="none"];
   namespaceUrlTemplates -> buildFetchUrls[arrowhead="none"];
@@ -68,7 +63,6 @@ johndoe: https://example.com/trovu/g.1.yml
   shortcutFetchUrls -> responseO [label="request o"];
   shortcutFetchUrls -> responseDe [label="request de"];
   shortcutFetchUrls -> responseDotDe [label="request .de"];
-  shortcutFetchUrls -> responseJohnDoe [label="request johndoe"];
   responseO -> pickNamespace[arrowhead="none"];
   responseDotDe -> pickNamespace[arrowhead="none"];
   namespaceOrder -> pickNamespace [arrowhead="none"];
@@ -80,7 +74,7 @@ johndoe: https://example.com/trovu/g.1.yml
   readFile [label="read file from .de request\nhttps://raw.githubusercontent.com
 /trovu/trovu-data/master/shortcuts/.de/g/1.yml" shape="none" margin=0 width=0 height=0];
   readFile -> redirectUrlDotDe; 
-  redirectUrlReplacedVariables[label="url: https://www.google.de/search?hl=de&q={%query}&ie=utf-8"]
+  redirectUrlReplacedVariables[label="https://www.google.de/search?hl=de&q={%query}&ie=utf-8"]
   redirectUrlDotDe -> replaceVariables [arrowhead="none"];
   variables -> replaceVariables [arrowhead="none"];
   replaceVariables [label="replace variables" shape="none" margin=0 width=0 height=0];
