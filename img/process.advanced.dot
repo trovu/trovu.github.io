@@ -1,0 +1,92 @@
+digraph {
+
+  node [shape="rectangle"]
+  graph [fontname = "helvetica"];
+  node [fontname = "helvetica"];
+  edge [fontname = "helvetica"];
+
+  subgraph cluster_input {
+    label="User input";
+    style=filled;
+    color=gray90;
+    query [label="Query: g foobar"];
+  }
+  subgraph cluster_settings {
+    label="Settings";
+    style=filled;
+    color=gray90;
+    namespaceUrlTemplates -> namespaceOrder [style="invis"];
+    namespaceOrder ->  variables [style="invis"];
+    variables [label="Variables\nLanguage: de\nCountry: .de"]
+    namespaceOrder [label="Namespace order: o, de, .de, johndoe"];
+    namespaceUrlTemplates [label="Namespace URL templates
+
+o: https://raw.githubusercontent.com
+/trovu/trovu-data/master/shortcuts
+/o/{%keyword}/{%argumentCount}.yml
+
+de: https://raw.githubusercontent.com
+/trovu/trovu-data/master/shortcuts
+/de/{%keyword}/{%argumentCount}.yml
+
+.de: https://raw.githubusercontent.com
+/trovu/trovu-data/master/shortcuts
+/.de/{%keyword}/{%argumentCount}.yml
+
+johndoe: https://example.com/trovu
+/{%keyword}.{%argumentCount}.yml
+"];
+  }
+  subgraph cluster_output {
+    label="Output / redirect user there";
+    labelloc=b;
+    style=filled;
+    color=gray90;
+    redirectUrlReplacedArguments[label="https://www.google.de/search?hl=de&q=foobar&ie=utf-8"]
+  }
+
+  parsedQuery [label="keyword: g\narguments: ['foobar']\nargumentCount: 1"];
+  shortcutFetchUrls [label="Shortcut fetch URLs
+o: https://raw.githubusercontent.com/trovu/trovu-data/master/shortcuts/o/g/1.yml
+de: https://raw.githubusercontent.com/trovu/trovu-data/master/shortcuts/de/g/1.yml
+.de: https://raw.githubusercontent.com/trovu/trovu-data/master/shortcuts/.de/g/1.yml
+johndoe: https://example.com/trovu/g.1.yml
+"];
+
+  responseO [label="Success (200)"];
+  responseDe [label="Not Found (404)"];
+  responseDotDe [label="Success (200)"];
+  responseJohnDoe [label="Not Found (404)"];
+  redirectUrlDotDe [label="url: https://www.google.de/search?hl={$language}&q={%query}&ie=utf-8"];
+  query->parsedQuery [label="parse query"];
+  parsedQuery -> buildFetchUrls[arrowhead="none"];
+  namespaceUrlTemplates -> buildFetchUrls[arrowhead="none"];
+ 
+  buildFetchUrls [label="build fetch URLs" shape="none" margin=0 width=0 height=0]; 
+
+  buildFetchUrls -> shortcutFetchUrls;
+  shortcutFetchUrls -> responseO [label="request o"];
+  shortcutFetchUrls -> responseDe [label="request de"];
+  shortcutFetchUrls -> responseDotDe [label="request .de"];
+  shortcutFetchUrls -> responseJohnDoe [label="request johndoe"];
+  responseO -> pickNamespace[arrowhead="none"];
+  responseDotDe -> pickNamespace[arrowhead="none"];
+  namespaceOrder -> pickNamespace [arrowhead="none"];
+
+  pickNamespace [label="pick namespace according to order" shape="none" margin=0 width=0 height=0];
+  pickNamespace -> pickedNamespace;
+  pickedNamespace [label="Picked namespace: .de"]
+  pickedNamespace -> readFile [arrowhead="none"];
+  readFile [label="read file from .de request\nhttps://raw.githubusercontent.com
+/trovu/trovu-data/master/shortcuts/.de/g/1.yml" shape="none" margin=0 width=0 height=0];
+  readFile -> redirectUrlDotDe; 
+  redirectUrlReplacedVariables[label="https://www.google.de/search?hl=de&q={%query}&ie=utf-8"]
+  redirectUrlDotDe -> replaceVariables [arrowhead="none"];
+  variables -> replaceVariables [arrowhead="none"];
+  replaceVariables [label="replace variables" shape="none" margin=0 width=0 height=0];
+  replaceVariables -> redirectUrlReplacedVariables;
+  replaceArguments [label="replace arguments" shape="none" margin=0 width=0 height=0];
+  redirectUrlReplacedVariables -> replaceArguments [arrowhead="none"];
+  parsedQuery -> replaceArguments [arrowhead="none"];
+  replaceArguments -> redirectUrlReplacedArguments;
+}
