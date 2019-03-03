@@ -33,8 +33,9 @@ de: https://raw.githubusercontent.com
 /trovu/trovu-data/master/shortcuts
 /.de/{%keyword}/{%argumentCount}.yml
 
-johndoe: https://example.com/trovu
-/{%keyword}.{%argumentCount}.yml
+johndoe: https://raw.githubusercontent.com
+/johndoe/trovu-data/user/master/shortcuts
+/%keyword}.{%argumentCount}.yml
 "];
   }
   subgraph cluster_output {
@@ -50,7 +51,7 @@ johndoe: https://example.com/trovu
 o: https://raw.githubusercontent.com/trovu/trovu-data/master/shortcuts/o/g/1.yml
 de: https://raw.githubusercontent.com/trovu/trovu-data/master/shortcuts/de/g/1.yml
 .de: https://raw.githubusercontent.com/trovu/trovu-data/master/shortcuts/.de/g/1.yml
-johndoe: https://example.com/trovu/g.1.yml
+johndoe: https://raw.githubusercontent.com/john-doe/trovu-data-user/master/shortcuts/g.1.yml
 "];
 
   responseO [label="Success (200)"];
