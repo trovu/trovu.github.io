@@ -1,77 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://trovu.net/index.html</loc>
+         <loc>https://trovu.net/</loc>
          <lastmod>2023-11-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://trovu.net/presentations.html</loc>
+         <loc>https://trovu.net/presentations/</loc>
          <lastmod>2023-11-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://trovu.net/privacy.html</loc>
+         <loc>https://trovu.net/privacy/</loc>
          <lastmod>2023-11-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://trovu.net/editors/policy.html</loc>
+         <loc>https://trovu.net/editors/policy/</loc>
          <lastmod>2023-11-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://trovu.net/legacy/differences.html</loc>
+         <loc>https://trovu.net/legacy/differences/</loc>
          <lastmod>2023-11-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://trovu.net/legacy/migrate.html</loc>
+         <loc>https://trovu.net/legacy/migrate/</loc>
          <lastmod>2023-11-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://trovu.net/shortcuts/includes.html</loc>
+         <loc>https://trovu.net/shortcuts/includes/</loc>
          <lastmod>2023-11-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://trovu.net/shortcuts/namespaces.html</loc>
+         <loc>https://trovu.net/shortcuts/namespaces/</loc>
          <lastmod>2023-11-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://trovu.net/shortcuts/urls.html</loc>
+         <loc>https://trovu.net/shortcuts/urls/</loc>
          <lastmod>2023-11-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://trovu.net/shortcuts/userscripts.html</loc>
+         <loc>https://trovu.net/shortcuts/userscripts/</loc>
          <lastmod>2023-11-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://trovu.net/users/advanced.html</loc>
+         <loc>https://trovu.net/users/advanced/</loc>
          <lastmod>2023-11-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://trovu.net/users/integration.html</loc>
+         <loc>https://trovu.net/users/integration/</loc>
          <lastmod>2023-11-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://trovu.net/users/processing.html</loc>
+         <loc>https://trovu.net/users/processing/</loc>
          <lastmod>2023-11-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://trovu.net/users/support.html</loc>
+         <loc>https://trovu.net/users/support/</loc>
          <lastmod>2023-11-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://trovu.net/users/troubleshooting.html</loc>
+         <loc>https://trovu.net/users/troubleshooting/</loc>
          <lastmod>2023-11-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
